@@ -9,28 +9,31 @@ using uPLibrary.Networking.M2Mqtt.Messages;
 
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            //创建客户端实例  
-            //MqttClient client = new MqttClient(IPAddress.Parse(MQTT_BROKER_ADDRESS)); //主机为IP时  
-            //MqttClient client = new MqttClient(MQTT_BROKER_ADDRESS); //当主机地址为域名时  
+            //创建客户端实例
+            //MqttClient client = new MqttClient(IPAddress.Parse(MQTT_BROKER_ADDRESS)); //主机为IP时
+            //MqttClient client = new MqttClient(MQTT_BROKER_ADDRESS); //当主机地址为域名时
 
             MqttClient client = new MqttClient(IPAddress.Parse("127.0.0.1"));
 
-            // 注册消息接收处理事件，还可以注册消息订阅成功、取消订阅成功、与服务器断开等事件处理函数  
+            // 注册消息接收处理事件，还可以注册消息订阅成功、取消订阅成功、与服务器断开等事件处理函数
             //client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
             client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
 
-            //生成客户端ID并连接服务器  
+            //生成客户端ID并连接服务器
             //string clientId = Guid.NewGuid().ToString();
             //client.Connect("aaa");
             //client.Connect("127.0.0.1");
             //Console.WriteLine(client.IsConnected);
             try
             {
-                client.Connect("MJ_124804073");
+                string clientId = Guid.NewGuid().ToString();
+                Console.WriteLine(clientId);
+                client.Connect(clientId);
+                //client.Connect("MJ_124804073");
             }
             catch (Exception e)
             {
@@ -39,8 +42,7 @@ namespace ConsoleApplication1
 
             Console.WriteLine(client.IsConnected);
 
-
-            // 订阅主题"/home/temperature" 消息质量为 2   
+            // 订阅主题"/home/temperature" 消息质量为 2
             //client.Subscribe(new string[] { "angular" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
             //client.Publish("angular", System.Text.Encoding.Default.GetBytes("Hello World"));
@@ -48,11 +50,9 @@ namespace ConsoleApplication1
             Console.ReadKey();
         }
 
-      
-
-       static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        private static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
-            //处理接收到的消息  
+            //处理接收到的消息
             string msg = System.Text.Encoding.Default.GetString(e.Message);
 
             Console.WriteLine(msg);

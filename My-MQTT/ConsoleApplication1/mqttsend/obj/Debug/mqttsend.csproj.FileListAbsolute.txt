@@ -17,3 +17,6 @@ C:\原电脑文件\C#\MQTT\ConsoleApplication1\mqttsend\obj\Debug\mqttsend.cspro
 C:\原电脑文件\C#\MQTT\ConsoleApplication1\mqttsend\obj\Debug\mqttsend.Form1.resources
 C:\原电脑文件\C#\MQTT\ConsoleApplication1\mqttsend\obj\Debug\mqttsend.Properties.Resources.resources
 C:\原电脑文件\C#\MQTT\ConsoleApplication1\mqttsend\obj\Debug\mqttsend.csproj.GenerateResource.Cache
+C:\Users\MJ\MyGit\MQTT\My-MQTT\ConsoleApplication1\mqttsend\bin\Debug\mqttsend.exe.config
+C:\Users\MJ\MyGit\MQTT\My-MQTT\ConsoleApplication1\mqttsend\obj\Debug\mqttsend.exe
+C:\Users\MJ\MyGit\MQTT\My-MQTT\ConsoleApplication1\mqttsend\obj\Debug\mqttsend.pdb
